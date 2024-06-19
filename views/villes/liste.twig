@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+{% block body %}
+    <h1>Liste des villes</h1>
+    <ul>
+    {% for ville in villes %}
+        <li>{{ ville.nom }} {{ ville.codePostal }}</li>
+        {% for user in ville.users %}
+            {{ user.nom }}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% endblock %}

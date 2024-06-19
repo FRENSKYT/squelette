@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<style>
+    input, button {
+        margin-top: 10px;
+    }
+
+    button {
+        background: linear-gradient(93deg, rgba(32,184,32,1) 0%, rgba(0,211,255,1) 100%);
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        font-size: 15px;
+        padding: 11px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <form action="?c=index&t=recup" method="post">
+        <input type="text" name="name" id="first-name" placeholder="Prénom" autocomplete="off"><br>
+        <input type="text" name="last_name" id="last-name" placeholder="Nom" autocomplete="off"><br>
+        <input type="text" name="ville" id="ville" placeholder="Ville" autocomplete="off"><br>
+        <input type="date" name="date" id="date" required><br>
+        <button type="submit">Envoyer</button>
+{% endblock %}

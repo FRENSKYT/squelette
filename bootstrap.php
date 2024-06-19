@@ -23,7 +23,7 @@ $getParams = isset($_GET['c']) ? $_GET['c'] : null;
 $postParams = isset($_POST) ? $_POST : null;
 
 $params = array(array(
-    "url"=>"http://195.154.118.169/pter/backend/boorstrap.php",
+    "url"=>"http://195.154.118.169/pter/backend/bootstrap.php",
     "message"=>(isset($_GET["message"])?$_GET['message']:""),
     "get"=>$getParams,
     "post"=>$postParams

@@ -4,9 +4,14 @@ namespace Controllers;
 use \Twig\src\Loader;
 use \Twig_Environment;
 
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
+
 class Controller
 {
     protected $twig;
+    protected $em;
     
     function __construct()
     {
@@ -25,5 +30,20 @@ class Controller
             'debug' => true,
         ));
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
+        //****************************************
+        $isDevMode = true;
+        $proxyDir=null;
+        $cache=null;
+        // the connection configuration
+        $dbParams = array(
+            'driver'   => 'pdo_mysql',
+            'user'     => 'lorick',
+            'password' => 'plop',
+            'dbname'   => 'lorick',
+        );
+        $useSimpleAnnotationReader = false;
+        $config = ORMSetup::createAttributeMetadataConfiguration(array(__DIR__."/src/"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
+        //$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+        $this->em = EntityManager::create($dbParams, $config);
     }
 }
